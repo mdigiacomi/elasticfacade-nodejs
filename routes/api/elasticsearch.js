@@ -44,10 +44,10 @@ router.get('/:index/:value', function (req, res, next) {
   });
 });
 
-router.post('/', function (req, res, next) {
+router.post('/:index/:type/', function (req, res, next) {
   client.create({
-    index: 'appinfo',
-    type: 'appinfo',
+    index: req.params.index,
+    type: req.params.index,
     body: req.body,
   }, function (error, response) {
     console.log(error);
