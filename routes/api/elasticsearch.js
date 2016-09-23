@@ -8,14 +8,32 @@ var client = new elasticsearch.Client({
 });
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/:index/', function (req, res, next) {
   client.search({
-    index: 'appinfo',
+    index: req.params.index,
     type: '',
     body: {
       query: {
         match: {
           body: ''
+        }
+      }
+    }
+  }).then(function (resp) {
+    res.send(resp.hits.hits);
+  }, function (err) {
+    res.send(err.message);
+  });
+});
+
+router.get('/:index/:value', function (req, res, next) {
+  client.search({
+    index: req.params.index,
+    type: '',
+    body: {
+      query: {
+        term :{
+          "AppName": req.params.value
         }
       }
     }
