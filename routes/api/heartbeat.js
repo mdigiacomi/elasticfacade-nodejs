@@ -3,7 +3,7 @@ var elasticsearch = require('elasticsearch');
 
 var router = express.Router();
 var client = new elasticsearch.Client({
-  host: 'localhost:9200',
+  host: 'home.michaeldigiacomi.com:9200',
   log: 'trace'
 });
 
