@@ -52,7 +52,8 @@ router.get('/:index/:value', function (req, res, next) {
 router.post('/:index/:type/', function (req, res, next) {
   client.create({
     index: req.params.index,
-    type: req.params.index,
+    type: req.params.type,
+    id: 0,
     body: req.body,
   }, function (error, response) {
     console.log(error);
