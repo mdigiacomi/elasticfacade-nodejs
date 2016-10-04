@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var appinfo = require('./routes/api/elasticsearch');
+var Documents = require('./routes/api/Documents');
+var esindex = require('./routes/api/index');
 var heartbeat = require('./routes/api/heartbeat');
 
 var app = express();
@@ -24,7 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/api/elasticsearch', appinfo);
+app.use('/api/documents', Documents);
+app.use('/api/index', esindex);
 app.use('/api/heartbeat', heartbeat);
 
 // catch 404 and forward to error handler

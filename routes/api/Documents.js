@@ -7,6 +7,11 @@ var client = new elasticsearch.Client({
   log: 'trace'
 });
 
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
 /* GET users listing. */
 router.get('/:index/', function (req, res, next) {
   client.search({
@@ -45,7 +50,7 @@ router.get('/:index/:value', function (req, res, next) {
 });
 
 router.post('/:index/:type/', function (req, res, next) {
-  client.create({
+  client.indices.create({
     index: req.params.index,
     type: req.params.index,
     body: req.body,
