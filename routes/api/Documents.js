@@ -50,7 +50,7 @@ router.get('/:index/:value', function (req, res, next) {
 });
 
 router.post('/:index/:type/', function (req, res, next) {
-  client.indices.create({
+  client.create({
     index: req.params.index,
     type: req.params.index,
     body: req.body,
